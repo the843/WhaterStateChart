@@ -39,43 +39,24 @@ Enter 2 → Casablanca
 Enter 5 → Marrakech
 
 Available Cities 🏙️
-Rabat
-
-Casablanca
-
-Tangier
-
-Fes
-
-Marrakech
-
-Agadir
-
-Meknes
-
-Ouzoud
-
-Tetouan
-
-El Jadida
-
-Safi
-
-Kenitra
-
-Nador
-
-Beni Mellal
-
-Oujda
-
-Berrechid
-
-Settat
-
-Taza
-
-Khenifra
-
-Larache
-
+1. Rabat  
+2. Casablanca  
+3. Tangier  
+4. Fes  
+5. Marrakech  
+6. Agadir  
+7. Meknes  
+8. Ouzoud  
+9. Tetouan  
+10. El Jadida  
+11. Safi  
+12. Kenitra  
+13. Nador  
+14. Beni Mellal  
+15. Oujda  
+16. Berrechid  
+17. Settat  
+18. Taza  
+19. Khenifra  
+20. Larache  
+21. Oussouye  
