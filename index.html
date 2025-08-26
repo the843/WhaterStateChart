@@ -1,0 +1,72 @@
+
+<div   id="chart"></div>
+<input type="text" id="cityInput" placeholder="أدخل رقم المدينة (1-3)">
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  const cities = [
+  { name: "rabat", lat: 34.02, lon: -6.83 },
+  { name: "casa", lat: 33.59, lon: -7.62 },
+  { name: "tanger", lat: 35.77, lon: -5.80 },
+  { name: "fes", lat: 34.03, lon: -5.00 },
+  { name: "marrakech", lat: 31.63, lon: -7.99 },
+  { name: "agadir", lat: 30.42, lon: -9.60 },
+  { name: "meknes", lat: 33.89, lon: -5.55 },
+  { name: "ouzoud", lat: 31.73, lon: -7.50 },
+  { name: "tetouan", lat: 35.57, lon: -5.37 },
+  { name: "el jadida", lat: 33.25, lon: -8.50 },
+  { name: "safi", lat: 32.30, lon: -9.23 },
+  { name: "kenitra", lat: 34.26, lon: -6.58 },
+  { name: "nador", lat: 35.17, lon: -2.93 },
+  { name: "beni mellal", lat: 32.34, lon: -6.36 },
+  { name: "oujda", lat: 34.68, lon: -1.91 },
+  { name: "berrechid", lat: 33.28, lon: -7.13 },
+  { name: "settat", lat: 33.00, lon: -7.62 },
+  { name: "taza", lat: 34.21, lon: -4.00 },
+  { name: "khenifra", lat: 32.94, lon: -5.67 },
+  { name: "larache", lat: 35.18, lon: -6.16 },
+  { name: "oussouye", lat: 31.46, lon: -9.12 }
+
+  ];
+
+  async function drawChart(city) {
+    try {
+      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&hourly=temperature_2m`);
+      const data = await response.json();
+
+      const times = data.hourly.time.slice(0, 24);
+      const temps = data.hourly.temperature_2m.slice(0, 24);
+
+      const trace = {
+        x: times,
+        y: temps,
+        type: 'bar',
+        marker: { color: temps.map(t => t > 30 ? 'red' : 'blue') }
+      };
+
+      const layout = {
+        title: `${city.name} WEATHER FOR 24 H`,
+        xaxis: { title: "TIME" },
+        yaxis: { title: "Temperature (°C)" }
+      };
+
+      Plotly.newPlot('chart', [trace], layout);
+
+    } catch (error) {
+      console.error("  error in fetch data:", error);
+    }
+  }
+
+  
+  drawChart(cities[0]);
+
+
+  const input = document.getElementById('cityInput');
+  input.addEventListener('input', () => {
+    const val = input.value.trim();
+    const index = parseInt(val) - 1;
+    if (index >= 0 && index < cities.length) {
+      drawChart(cities[index]);
+    }
+  });
+</script>
