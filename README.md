@@ -8,7 +8,8 @@ A simple web application that visualizes **24-hour temperature forecasts** for M
 - Temperatures **above 30°C** are displayed in **red**, otherwise in **blue**.  
 - Input field to select a city by entering its **index number (1–20)**.  
 - Logs the **current hour & temperature** in the console.  
-
+## Live Demo 🚀
+👉 [Try it here](https://whater-state-chart.vercel.app/)  
 ## Technologies Used 🛠️
 - **HTML5** for structure  
 - **JavaScript (ES6+)** for data fetching & logic  
